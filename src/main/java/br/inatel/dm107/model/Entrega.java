@@ -1,18 +1,18 @@
 package br.inatel.dm107.model;
 
-import java.util.Date;
+import java.time.Instant;
 
 public class Entrega {
 	
 	private int id;
 	private int numeroPedido;
-	private String idCliente;
+	private int idCliente;
 	private String nomeRecebedor;
 	private String cpfRecebedor;
-	private Date dataEntrega;
+	private Instant dataEntrega;
 	
-	public Entrega(int id, int numeroPedido, String idCliente, String nomeRecebedor, String cpfRecebedor,
-			Date dataEntrega) {
+	public Entrega(int id, int numeroPedido, int idCliente, String nomeRecebedor, String cpfRecebedor,
+			Instant dataEntrega) {
 		this.id = id;
 		this.numeroPedido = numeroPedido;
 		this.idCliente = idCliente;
@@ -37,11 +37,11 @@ public class Entrega {
 		this.numeroPedido = numeroPedido;
 	}
 
-	public String getIdCliente() {
+	public int getIdCliente() {
 		return idCliente;
 	}
 
-	public void setIdCliente(String idCliente) {
+	public void setIdCliente(int idCliente) {
 		this.idCliente = idCliente;
 	}
 
@@ -61,11 +61,11 @@ public class Entrega {
 		this.cpfRecebedor = cpfRecebedor;
 	}
 
-	public Date getDataEntrega() {
+	public Instant getDataEntrega() {
 		return dataEntrega;
 	}
 
-	public void setDataEntrega(Date dataEntrega) {
+	public void setDataEntrega(Instant dataEntrega) {
 		this.dataEntrega = dataEntrega;
 	}	
 
