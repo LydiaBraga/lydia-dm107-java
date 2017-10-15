@@ -21,4 +21,5 @@ dependencies {
 	compile group: 'org.glassfish.jersey.core', name: 'jersey-server', version: '2.25'
 	compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-servlet', version: '2.25'
 	compile group: 'org.glassfish.jersey.media', name: 'jersey-media-json-jackson', version: '2.25'
+	compile group: 'com.google.guava', name: 'guava', version: '11.0.2'
 }
