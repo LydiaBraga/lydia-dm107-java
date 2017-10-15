@@ -4,14 +4,18 @@ import java.time.Instant;
 
 public class Entrega {
 	
-	private int id;
-	private int numeroPedido;
-	private int idCliente;
+	private Integer id;
+	private Integer numeroPedido;
+	private Integer idCliente;
 	private String nomeRecebedor;
 	private String cpfRecebedor;
 	private Instant dataEntrega;
 	
-	public Entrega(int id, int numeroPedido, int idCliente, String nomeRecebedor, String cpfRecebedor,
+	public Entrega() {
+		// For jersey dependencies
+	}
+	
+	public Entrega(Integer id, Integer numeroPedido, Integer idCliente, String nomeRecebedor, String cpfRecebedor,
 			Instant dataEntrega) {
 		this.id = id;
 		this.numeroPedido = numeroPedido;
@@ -21,27 +25,27 @@ public class Entrega {
 		this.dataEntrega = dataEntrega;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public int getNumeroPedido() {
+	public Integer getNumeroPedido() {
 		return numeroPedido;
 	}
 
-	public void setNumeroPedido(int numeroPedido) {
+	public void setNumeroPedido(Integer numeroPedido) {
 		this.numeroPedido = numeroPedido;
 	}
 
-	public int getIdCliente() {
+	public Integer getIdCliente() {
 		return idCliente;
 	}
 
-	public void setIdCliente(int idCliente) {
+	public void setIdCliente(Integer idCliente) {
 		this.idCliente = idCliente;
 	}
 

@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 public class DaoConnection {
 	
-	private static final String URL = "dbc:mysql://localhost:3306/logistica";
+	private static final String URL = "jdbc:mysql://localhost/logistica";
 	private static final String USER = "root";
 	private static final String PWD = "root";
 	
