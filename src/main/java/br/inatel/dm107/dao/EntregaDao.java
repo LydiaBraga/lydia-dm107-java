@@ -4,15 +4,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.Instant;
+import java.sql.Timestamp;
 
 import br.inatel.dm107.model.Entrega;
 
 public class EntregaDao {
 	
 	private static final String INSERT_ENTREGA =
-			"INSERT INTO entrega(numero_pedido, id_cliente, nome_recebedor, cpf_recebedor) "
-			+ "VALUES(?, ?, ?, ?);";
+			"INSERT INTO entrega(numero_pedido, id_cliente, nome_recebedor, cpf_recebedor, data_entrega) "
+			+ "VALUES(?, ?, ?, ?, ?);";
 
 	private static final String SELECT_ENTREGA_BY_NUMERO_PEDIDO =
 			"SELECT * FROM entrega "
@@ -25,6 +25,7 @@ public class EntregaDao {
 			pstmt.setInt(2, entrega.getIdCliente());
 			pstmt.setString(3, entrega.getNomeRecebedor());
 			pstmt.setString(4, entrega.getCpfRecebedor());
+			pstmt.setTimestamp(5, entrega.getDataEntrega());
 			
 			pstmt.executeUpdate();	
 		}
@@ -45,7 +46,7 @@ public class EntregaDao {
 					Integer idCiente = rs.getInt(3);
 					String nomeRecebedor = rs.getString(4);
 					String cpfRecebedor = rs.getString(5);
-					Instant dataEntrega = rs.getTimestamp(6).toInstant();
+					Timestamp dataEntrega = rs.getTimestamp(6);
 					
 					entrega = new Entrega(id, noPedido, idCiente, nomeRecebedor, cpfRecebedor, dataEntrega);
 				}

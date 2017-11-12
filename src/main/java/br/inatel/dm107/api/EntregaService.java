@@ -8,6 +8,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -27,11 +28,10 @@ public class EntregaService {
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response addEntrega(Entrega entrega) {
 		if (Objects.isNull(entrega.getIdCliente()) || Objects.isNull(entrega.getNumeroPedido())) {
-			String errorMessage = "Os campos id do cliente e número do pedido são obrigatórios!";
-			
-			return Response.status(Status.BAD_REQUEST).entity(errorMessage).build();
+			return Response.status(Status.BAD_REQUEST).build();
 		}
 		
 		try {
@@ -39,34 +39,26 @@ public class EntregaService {
 			
 			return Response
 					.created(uriInfo.getAbsolutePathBuilder().path(String.valueOf(entrega.getNumeroPedido())).build())
-					.entity(entrega)
 					.build();
 		} catch (SQLException e) {
-			String errorMessage = "Erro ao adicionar entrega!";
-			
-			return Response.serverError().entity(errorMessage).build();
+			return Response.serverError().build();
 		}
 	}
 
 	@GET
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{numeroPedido}")
 	public Response getEntregaByNumeroPedido(@PathParam("numeroPedido") int numeroPedido) {
 		try {
 			Entrega entrega = entregaDao.selectEntregaByNumeroPedido(numeroPedido);
 			
-			if (Objects.isNull(entrega)) {
-				String errorMessage = "Entrega não encontrada para número de pedido " + numeroPedido;
-				
-				return Response.status(Status.NOT_FOUND).entity(errorMessage).build();
+			if (Objects.isNull(entrega)) {				
+				return Response.status(Status.NOT_FOUND).build();
 			}
 			
-			return Response
-					.ok(entrega)
-					.build();
+			return Response.ok(entrega).build();
 		} catch (SQLException e) {
-			String errorMessage = "Erro inesperado ao buscar entrega!";
-			
-			return Response.serverError().entity(errorMessage).build();
+			return Response.serverError().build();
 		}
 	
 	}

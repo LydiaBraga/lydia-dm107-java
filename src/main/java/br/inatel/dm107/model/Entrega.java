@@ -1,6 +1,6 @@
 package br.inatel.dm107.model;
 
-import java.time.Instant;
+import java.sql.Timestamp;
 
 public class Entrega {
 	
@@ -9,14 +9,14 @@ public class Entrega {
 	private Integer idCliente;
 	private String nomeRecebedor;
 	private String cpfRecebedor;
-	private Instant dataEntrega;
+	private Timestamp dataEntrega;
 	
 	public Entrega() {
 		// For jersey dependencies
 	}
 	
 	public Entrega(Integer id, Integer numeroPedido, Integer idCliente, String nomeRecebedor, String cpfRecebedor,
-			Instant dataEntrega) {
+			Timestamp dataEntrega) {
 		this.id = id;
 		this.numeroPedido = numeroPedido;
 		this.idCliente = idCliente;
@@ -65,11 +65,11 @@ public class Entrega {
 		this.cpfRecebedor = cpfRecebedor;
 	}
 
-	public Instant getDataEntrega() {
+	public Timestamp getDataEntrega() {
 		return dataEntrega;
 	}
 
-	public void setDataEntrega(Instant dataEntrega) {
+	public void setDataEntrega(Timestamp dataEntrega) {
 		this.dataEntrega = dataEntrega;
 	}	
 
